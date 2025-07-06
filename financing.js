@@ -51,9 +51,97 @@ function collectFormData() {
 }
 
 function generateExcel(data) {
-  const headers = Object.keys(data);
-  const values = Object.values(data);
-  const ws = XLSX.utils.aoa_to_sheet([headers, values]);
+  const applicantFields = [
+    ['First Name', 'First Name'],
+    ['Middle Name', 'Middle Name'],
+    ['Last Name', 'Last Name'],
+    ['Street Address', 'Street Address'],
+    ['City', 'City'],
+    ['State', 'State'],
+    ['Zip Code', 'Zip Code'],
+    ['Social Security Number', 'Social Security Number'],
+    ['Date of Birth', 'Date of Birth'],
+    ['Primary Phone', 'Primary Phone'],
+    ['Email Address', 'Email Address'],
+    ["Driver's License", "Driver's License Number"],
+    ['ID Issue Date', 'ID Issue Date'],
+    ['ID Expiration Date', 'ID Expiration Date'],
+    ['Gross Monthly Income', 'Gross Monthly Income'],
+    ['Position', 'Position'],
+    ['Length of Employment', 'Length of Employment'],
+    ['Monthly Mortgage Payment', 'Monthly Mortgage Payment'],
+    ['Years in the House', 'Years in the House']
+  ];
+
+  const coApplicantFields = [
+    ['First Name', 'Co-First Name'],
+    ['Middle Name', 'Co-Middle Name'],
+    ['Last Name', 'Co-Last Name'],
+    ['Street Address', 'Co-Street Address'],
+    ['City', 'Co-City'],
+    ['State', 'Co-State'],
+    ['Zip Code', 'Co-Zip Code'],
+    ['Social Security Number', 'Co-Social Security Number'],
+    ['Date of Birth', 'Co-Date of Birth'],
+    ['Primary Phone', 'Co-Primary Phone'],
+    ['Email Address', 'Co-Email Address'],
+    ["Driver's License", "Co-Driver's License Number"],
+    ['ID Issue Date', 'Co-ID Issue Date'],
+    ['ID Expiration Date', 'Co-ID Expiration Date'],
+    ['Gross Monthly Income', 'Co-Gross Monthly Income'],
+    ['Position', 'Co-Position'],
+    ['Length of Employment', 'Co-Length of Employment'],
+    ['Monthly Mortgage Payment', 'Co-Monthly Mortgage Payment'],
+    ['Years in the House', 'Co-Years in the House']
+  ];
+
+  const aoa = [
+    ['Applicant', null, '', 'Co-Applicant', null]
+  ];
+
+  for (let i = 0; i < applicantFields.length; i++) {
+    const [labelA, keyA] = applicantFields[i];
+    const [labelC, keyC] = coApplicantFields[i];
+    aoa.push([
+      labelA + ':',
+      data[keyA] || '',
+      '',
+      labelC + ':',
+      data[keyC] || ''
+    ]);
+  }
+
+  const ws = XLSX.utils.aoa_to_sheet(aoa);
+  ws['!merges'] = [
+    { s: { r: 0, c: 0 }, e: { r: 0, c: 1 } },
+    { s: { r: 0, c: 3 }, e: { r: 0, c: 4 } }
+  ];
+  ws['!cols'] = [
+    { wch: 24 },
+    { wch: 24 },
+    { wch: 3 },
+    { wch: 24 },
+    { wch: 24 }
+  ];
+
+  const thin = { style: 'thin' };
+  const border = { top: thin, bottom: thin, left: thin, right: thin };
+
+  for (let r = 0; r < aoa.length; r++) {
+    for (let c = 0; c < 5; c++) {
+      if (c === 2) continue; // spacer column
+      const cellAddress = XLSX.utils.encode_cell({ r, c });
+      const cell = ws[cellAddress];
+      if (cell) {
+        cell.s = {
+          border,
+          alignment: { vertical: 'center', horizontal: r === 0 ? 'center' : 'left' },
+          font: (r === 0 || c === 0 || c === 3) ? { bold: true } : {}
+        };
+      }
+    }
+  }
+
   const wb = XLSX.utils.book_new();
   XLSX.utils.book_append_sheet(wb, ws, 'Application');
   const firstName = data['First Name'] || 'Application';
