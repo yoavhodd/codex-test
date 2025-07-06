@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Financing Application</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body class="bg-gray-100">
+  <div class="max-w-3xl mx-auto p-4">
+    <h1 class="text-2xl font-bold mb-4 text-center">Financing Application</h1>
+    <form id="financeForm" class="bg-white p-6 rounded shadow-md grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label for="firstName" class="block text-sm font-medium text-gray-700">First Name</label>
+        <input id="firstName" name="firstName" type="text" class="mt-1 block w-full border-gray-300 rounded-md" required>
+      </div>
+      <div>
+        <label for="middleName" class="block text-sm font-medium text-gray-700">Middle Name</label>
+        <input id="middleName" name="middleName" type="text" class="mt-1 block w-full border-gray-300 rounded-md">
+      </div>
+      <div>
+        <label for="lastName" class="block text-sm font-medium text-gray-700">Last Name</label>
+        <input id="lastName" name="lastName" type="text" class="mt-1 block w-full border-gray-300 rounded-md" required>
+      </div>
+      <div class="md:col-span-2">
+        <label for="streetAddress" class="block text-sm font-medium text-gray-700">Street Address</label>
+        <input id="streetAddress" name="streetAddress" type="text" class="mt-1 block w-full border-gray-300 rounded-md" required>
+      </div>
+      <div>
+        <label for="city" class="block text-sm font-medium text-gray-700">City</label>
+        <input id="city" name="city" type="text" class="mt-1 block w-full border-gray-300 rounded-md" required>
+      </div>
+      <div>
+        <label for="state" class="block text-sm font-medium text-gray-700">State</label>
+        <input id="state" name="state" type="text" class="mt-1 block w-full border-gray-300 rounded-md" required>
+      </div>
+      <div>
+        <label for="zipCode" class="block text-sm font-medium text-gray-700">Zip Code</label>
+        <input id="zipCode" name="zipCode" type="text" class="mt-1 block w-full border-gray-300 rounded-md" required>
+      </div>
+      <div>
+        <label for="ssn" class="block text-sm font-medium text-gray-700">Social Security Number</label>
+        <input id="ssn" name="ssn" type="text" class="mt-1 block w-full border-gray-300 rounded-md" required>
+      </div>
+      <div>
+        <label for="dob" class="block text-sm font-medium text-gray-700">Date of Birth</label>
+        <input id="dob" name="dob" type="date" class="mt-1 block w-full border-gray-300 rounded-md" required>
+      </div>
+      <div>
+        <label for="phone" class="block text-sm font-medium text-gray-700">Primary Phone</label>
+        <input id="phone" name="phone" type="tel" class="mt-1 block w-full border-gray-300 rounded-md" required>
+      </div>
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+        <input id="email" name="email" type="email" class="mt-1 block w-full border-gray-300 rounded-md" required>
+      </div>
+      <div>
+        <label for="driversLicense" class="block text-sm font-medium text-gray-700">Driver’s License Number</label>
+        <input id="driversLicense" name="driversLicense" type="text" class="mt-1 block w-full border-gray-300 rounded-md" required>
+      </div>
+      <div>
+        <label for="issueDate" class="block text-sm font-medium text-gray-700">ID Issue Date</label>
+        <input id="issueDate" name="issueDate" type="date" class="mt-1 block w-full border-gray-300 rounded-md" required>
+      </div>
+      <div>
+        <label for="expirationDate" class="block text-sm font-medium text-gray-700">ID Expiration Date</label>
+        <input id="expirationDate" name="expirationDate" type="date" class="mt-1 block w-full border-gray-300 rounded-md" required>
+      </div>
+      <div class="md:col-span-2">
+        <button type="button" id="submitBtn" class="w-full py-2 px-4 bg-blue-600 text-white rounded-md hover:bg-blue-700">Submit Application</button>
+      </div>
+    </form>
+  </div>
+  <script src="financing.js"></script>
+</body>
+</html>
