@@ -8,67 +8,202 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 </head>
 <body class="bg-gray-100">
-  <div class="max-w-3xl mx-auto p-4">
-    <h1 class="text-2xl font-bold mb-4 text-center">Financing Application</h1>
-    <form id="financeForm" class="bg-white p-6 rounded shadow-md grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div>
-        <label for="firstName" class="block text-sm font-medium text-gray-700">First Name</label>
-        <input id="firstName" name="firstName" type="text" class="mt-1 block w-full border-gray-300 rounded-md" required>
-      </div>
-      <div>
-        <label for="middleName" class="block text-sm font-medium text-gray-700">Middle Name</label>
-        <input id="middleName" name="middleName" type="text" class="mt-1 block w-full border-gray-300 rounded-md">
-      </div>
-      <div>
-        <label for="lastName" class="block text-sm font-medium text-gray-700">Last Name</label>
-        <input id="lastName" name="lastName" type="text" class="mt-1 block w-full border-gray-300 rounded-md" required>
-      </div>
-      <div class="md:col-span-2">
-        <label for="streetAddress" class="block text-sm font-medium text-gray-700">Street Address</label>
-        <input id="streetAddress" name="streetAddress" type="text" class="mt-1 block w-full border-gray-300 rounded-md" required>
-      </div>
-      <div>
-        <label for="city" class="block text-sm font-medium text-gray-700">City</label>
-        <input id="city" name="city" type="text" class="mt-1 block w-full border-gray-300 rounded-md" required>
-      </div>
-      <div>
-        <label for="state" class="block text-sm font-medium text-gray-700">State</label>
-        <input id="state" name="state" type="text" class="mt-1 block w-full border-gray-300 rounded-md" required>
-      </div>
-      <div>
-        <label for="zipCode" class="block text-sm font-medium text-gray-700">Zip Code</label>
-        <input id="zipCode" name="zipCode" type="text" class="mt-1 block w-full border-gray-300 rounded-md" required>
-      </div>
-      <div>
-        <label for="ssn" class="block text-sm font-medium text-gray-700">Social Security Number</label>
-        <input id="ssn" name="ssn" type="text" class="mt-1 block w-full border-gray-300 rounded-md" required>
-      </div>
-      <div>
-        <label for="dob" class="block text-sm font-medium text-gray-700">Date of Birth</label>
-        <input id="dob" name="dob" type="date" class="mt-1 block w-full border-gray-300 rounded-md" required>
-      </div>
-      <div>
-        <label for="phone" class="block text-sm font-medium text-gray-700">Primary Phone</label>
-        <input id="phone" name="phone" type="tel" class="mt-1 block w-full border-gray-300 rounded-md" required>
-      </div>
-      <div>
-        <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
-        <input id="email" name="email" type="email" class="mt-1 block w-full border-gray-300 rounded-md" required>
-      </div>
-      <div>
-        <label for="driversLicense" class="block text-sm font-medium text-gray-700">Driver’s License Number</label>
-        <input id="driversLicense" name="driversLicense" type="text" class="mt-1 block w-full border-gray-300 rounded-md" required>
-      </div>
-      <div>
-        <label for="issueDate" class="block text-sm font-medium text-gray-700">ID Issue Date</label>
-        <input id="issueDate" name="issueDate" type="date" class="mt-1 block w-full border-gray-300 rounded-md" required>
-      </div>
-      <div>
-        <label for="expirationDate" class="block text-sm font-medium text-gray-700">ID Expiration Date</label>
-        <input id="expirationDate" name="expirationDate" type="date" class="mt-1 block w-full border-gray-300 rounded-md" required>
-      </div>
-      <div class="md:col-span-2">
-        <button type="button" id="submitBtn" class="w-full py-2 px-4 bg-blue-600 text-white rounded-md hover:bg-blue-700">Submit Application</button>
+  <div class="max-w-5xl mx-auto p-4">
+    <div class="flex justify-end mb-4">
+      <button id="signinBtn" class="py-2 px-4 bg-green-600 text-white rounded hover:bg-green-700">Sign in with Aqua Finance</button>
+    </div>
+    <h1 class="text-2xl font-bold mb-6 text-center">Financing Application</h1>
+    <form id="financeForm" class="space-y-6">
+      <section class="bg-white p-6 rounded shadow-md">
+        <h2 class="text-xl font-semibold mb-4">APPLICANT INFO</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label for="firstName" class="block text-sm font-medium text-gray-700">First Name</label>
+            <input id="firstName" type="text" class="mt-1 block w-full border-gray-300 rounded-md" required>
+          </div>
+          <div>
+            <label for="middleName" class="block text-sm font-medium text-gray-700">Middle Name</label>
+            <input id="middleName" type="text" class="mt-1 block w-full border-gray-300 rounded-md">
+          </div>
+          <div>
+            <label for="lastName" class="block text-sm font-medium text-gray-700">Last Name</label>
+            <input id="lastName" type="text" class="mt-1 block w-full border-gray-300 rounded-md" required>
+          </div>
+          <div>
+            <label for="streetAddress" class="block text-sm font-medium text-gray-700">Street Address</label>
+            <input id="streetAddress" type="text" class="mt-1 block w-full border-gray-300 rounded-md" required>
+          </div>
+          <div>
+            <label for="city" class="block text-sm font-medium text-gray-700">City</label>
+            <input id="city" type="text" class="mt-1 block w-full border-gray-300 rounded-md" required>
+          </div>
+          <div>
+            <label for="state" class="block text-sm font-medium text-gray-700">State</label>
+            <input id="state" type="text" class="mt-1 block w-full border-gray-300 rounded-md" required>
+          </div>
+          <div>
+            <label for="zipCode" class="block text-sm font-medium text-gray-700">Zip Code</label>
+            <input id="zipCode" type="text" class="mt-1 block w-full border-gray-300 rounded-md" required>
+          </div>
+          <div>
+            <label for="ssn" class="block text-sm font-medium text-gray-700">Social Security Number</label>
+            <input id="ssn" type="text" class="mt-1 block w-full border-gray-300 rounded-md" required>
+          </div>
+          <div>
+            <label for="dob" class="block text-sm font-medium text-gray-700">Date of Birth</label>
+            <input id="dob" type="date" class="mt-1 block w-full border-gray-300 rounded-md" required>
+          </div>
+          <div>
+            <label for="phone" class="block text-sm font-medium text-gray-700">Primary Phone</label>
+            <input id="phone" type="tel" class="mt-1 block w-full border-gray-300 rounded-md" required>
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+            <input id="email" type="email" class="mt-1 block w-full border-gray-300 rounded-md" required>
+          </div>
+          <div>
+            <label for="driversLicense" class="block text-sm font-medium text-gray-700">Driver’s License Number</label>
+            <input id="driversLicense" type="text" class="mt-1 block w-full border-gray-300 rounded-md" required>
+          </div>
+          <div>
+            <label for="issueDate" class="block text-sm font-medium text-gray-700">ID Issue Date</label>
+            <input id="issueDate" type="date" class="mt-1 block w-full border-gray-300 rounded-md" required>
+          </div>
+          <div>
+            <label for="expirationDate" class="block text-sm font-medium text-gray-700">ID Expiration Date</label>
+            <input id="expirationDate" type="date" class="mt-1 block w-full border-gray-300 rounded-md" required>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-white p-6 rounded shadow-md">
+        <h2 class="text-xl font-semibold mb-4">APPLICANT EMPLOYMENT INFO</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label for="monthlyIncome" class="block text-sm font-medium text-gray-700">Gross Monthly Income</label>
+            <input id="monthlyIncome" type="number" class="mt-1 block w-full border-gray-300 rounded-md">
+          </div>
+          <div>
+            <label for="position" class="block text-sm font-medium text-gray-700">Position</label>
+            <input id="position" type="text" class="mt-1 block w-full border-gray-300 rounded-md">
+          </div>
+          <div>
+            <label for="employmentYears" class="block text-sm font-medium text-gray-700">Length of Employment (years)</label>
+            <input id="employmentYears" type="number" class="mt-1 block w-full border-gray-300 rounded-md">
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-white p-6 rounded shadow-md">
+        <h2 class="text-xl font-semibold mb-4">APPLICANT MORTGAGE INFO</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label for="mortgagePayment" class="block text-sm font-medium text-gray-700">Monthly Mortgage Payment</label>
+            <input id="mortgagePayment" type="number" class="mt-1 block w-full border-gray-300 rounded-md">
+          </div>
+          <div>
+            <label for="yearsInHouse" class="block text-sm font-medium text-gray-700">Years in the house</label>
+            <input id="yearsInHouse" type="number" class="mt-1 block w-full border-gray-300 rounded-md">
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-white p-6 rounded shadow-md">
+        <h2 class="text-xl font-semibold mb-4">CO-APPLICANT INFO</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label for="coFirstName" class="block text-sm font-medium text-gray-700">First Name</label>
+            <input id="coFirstName" type="text" class="mt-1 block w-full border-gray-300 rounded-md">
+          </div>
+          <div>
+            <label for="coMiddleName" class="block text-sm font-medium text-gray-700">Middle Name</label>
+            <input id="coMiddleName" type="text" class="mt-1 block w-full border-gray-300 rounded-md">
+          </div>
+          <div>
+            <label for="coLastName" class="block text-sm font-medium text-gray-700">Last Name</label>
+            <input id="coLastName" type="text" class="mt-1 block w-full border-gray-300 rounded-md">
+          </div>
+          <div>
+            <label for="coStreetAddress" class="block text-sm font-medium text-gray-700">Street Address</label>
+            <input id="coStreetAddress" type="text" class="mt-1 block w-full border-gray-300 rounded-md">
+          </div>
+          <div>
+            <label for="coCity" class="block text-sm font-medium text-gray-700">City</label>
+            <input id="coCity" type="text" class="mt-1 block w-full border-gray-300 rounded-md">
+          </div>
+          <div>
+            <label for="coState" class="block text-sm font-medium text-gray-700">State</label>
+            <input id="coState" type="text" class="mt-1 block w-full border-gray-300 rounded-md">
+          </div>
+          <div>
+            <label for="coZipCode" class="block text-sm font-medium text-gray-700">Zip Code</label>
+            <input id="coZipCode" type="text" class="mt-1 block w-full border-gray-300 rounded-md">
+          </div>
+          <div>
+            <label for="coSsn" class="block text-sm font-medium text-gray-700">Social Security Number</label>
+            <input id="coSsn" type="text" class="mt-1 block w-full border-gray-300 rounded-md">
+          </div>
+          <div>
+            <label for="coDob" class="block text-sm font-medium text-gray-700">Date of Birth</label>
+            <input id="coDob" type="date" class="mt-1 block w-full border-gray-300 rounded-md">
+          </div>
+          <div>
+            <label for="coPhone" class="block text-sm font-medium text-gray-700">Primary Phone</label>
+            <input id="coPhone" type="tel" class="mt-1 block w-full border-gray-300 rounded-md">
+          </div>
+          <div>
+            <label for="coEmail" class="block text-sm font-medium text-gray-700">Email Address</label>
+            <input id="coEmail" type="email" class="mt-1 block w-full border-gray-300 rounded-md">
+          </div>
+          <div>
+            <label for="coDriversLicense" class="block text-sm font-medium text-gray-700">Driver’s License Number</label>
+            <input id="coDriversLicense" type="text" class="mt-1 block w-full border-gray-300 rounded-md">
+          </div>
+          <div>
+            <label for="coIssueDate" class="block text-sm font-medium text-gray-700">ID Issue Date</label>
+            <input id="coIssueDate" type="date" class="mt-1 block w-full border-gray-300 rounded-md">
+          </div>
+          <div>
+            <label for="coExpirationDate" class="block text-sm font-medium text-gray-700">ID Expiration Date</label>
+            <input id="coExpirationDate" type="date" class="mt-1 block w-full border-gray-300 rounded-md">
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-white p-6 rounded shadow-md">
+        <h2 class="text-xl font-semibold mb-4">CO-APPLICANT EMPLOYMENT INFO</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label for="coMonthlyIncome" class="block text-sm font-medium text-gray-700">Gross Monthly Income</label>
+            <input id="coMonthlyIncome" type="number" class="mt-1 block w-full border-gray-300 rounded-md">
+          </div>
+          <div>
+            <label for="coPosition" class="block text-sm font-medium text-gray-700">Position</label>
+            <input id="coPosition" type="text" class="mt-1 block w-full border-gray-300 rounded-md">
+          </div>
+          <div>
+            <label for="coEmploymentYears" class="block text-sm font-medium text-gray-700">Length of Employment (years)</label>
+            <input id="coEmploymentYears" type="number" class="mt-1 block w-full border-gray-300 rounded-md">
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-white p-6 rounded shadow-md">
+        <h2 class="text-xl font-semibold mb-4">CO-APPLICANT MORTGAGE INFO</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label for="coMortgagePayment" class="block text-sm font-medium text-gray-700">Monthly Mortgage Payment</label>
+            <input id="coMortgagePayment" type="number" class="mt-1 block w-full border-gray-300 rounded-md">
+          </div>
+          <div>
+            <label for="coYearsInHouse" class="block text-sm font-medium text-gray-700">Years in the house</label>
+            <input id="coYearsInHouse" type="number" class="mt-1 block w-full border-gray-300 rounded-md">
+          </div>
+        </div>
+      </section>
+
+      <div class="flex justify-end">
+        <button type="button" id="submitBtn" class="py-2 px-6 bg-blue-600 text-white rounded hover:bg-blue-700">Submit Application</button>
       </div>
     </form>
   </div>
